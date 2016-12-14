@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>jill-trainer</title>
+
+    <link rel="stylesheet" href="css/reset.css" />
+
+    <!--<script src="js/vendor/chart.js"></script>-->
+
+    <script src="js/vendor/riot+compiler.js"></script>
+    <script type="riot/tag" src="js/tags/my-app.tag"></script>
+    <script type="riot/tag" src="js/tags/my-header.tag"></script>
+    <script type="riot/tag" src="js/tags/my-nav.tag"></script>
+    <script type="riot/tag" src="js/tags/my-add-record.tag"></script>
+    <script type="riot/tag" src="js/tags/my-show-record.tag"></script>
+    <script type="riot/tag" src="js/tags/my-404.tag"></script>
+
+    <style>
+        html {
+            font-size: 16px;
+        }
+
+        body *{
+            font-family: '小塚ゴシック Pro L',' Meiryo UI', 'メイリオ', 'ＭＳ ゴシック', 'sans-serif';
+        }
+
+        h1 {
+            font-size: 1.6rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            line-height: 1.7rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            line-height: 1.5rem;
+        }
+
+        p {
+            font-size: 1.0rem;
+            line-height: 1.3rem;
+        }
+
+        table {
+            text-align: right;
+        }
+
+        table, th, td{
+            padding: 10px !important;
+            vertical-align: middle;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: solid 2px floralwhite;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            background-color: bisque;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+<my-app></my-app>
+
+<script>
+    riot.mount('*');
+</script>
+</body>
+</html>
