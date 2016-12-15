@@ -43,7 +43,7 @@
                     riot.route('/show');
                 }
             };
-            xhr.open('POST', 'http://localhost:3000/api/exercises', true );
+            xhr.open('POST', 'https://jill-trainer.herokuapp.com/api/exercises', true );
             xhr.setRequestHeader( 'Content-Type', 'application/json');
             xhr.send(JSON.stringify({date: '2016-12-04', cycling: '10'}));
         };
