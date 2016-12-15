@@ -1,8 +1,9 @@
 <my-show-record>
     <table>
+        <legend>{ date.getFullYear() }年{ date.getMonth() + 1 }月</legend>
         <thead>
         <tr>
-            <th>{ date.getFullYear() }<br />{ date.getMonth() + 1 }</th>
+            <th>日</th>
             <th><img src="img/running.jpg"/></th>
             <th><img src="img/cycling.jpg"/></th>
             <th><img src="img/lifting.jpg"/></th>

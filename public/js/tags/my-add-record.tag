@@ -1,13 +1,12 @@
 <my-add-record>
-    <p>{ date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() }</p>
+    <p>{ date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日' }</p>
     <div each="{ key, time in activityMap }" class="activity">
         <div>
             <img src="img/{ key }.jpg" data-activity="{ key }" onclick="{ onClickIcon }"/>
         </div>
         <div>
-            <p>{ key }</p>
             <p>{ time }分</p>
-            <p>{ calorieMap[key] * time }カロリー</p>
+            <img src="img/50.png" data-activity="{ key }" onclick="{ onClickReset }" />
         </div>
     </div>
     <button type="button" onclick="{ onClickSave }">登録する</button>
@@ -22,12 +21,6 @@
             lifting: 0,
             stretching: 0
         };
-        this.calorieMap = {
-            running: 10,
-            cycling: 5,
-            lifting: 20,
-            stretching: 1
-        };
 
 
         this.onClickIcon = function (event) {
@@ -36,8 +29,17 @@
         };
 
 
+        this.onClickReset = function (event) {
+            var activity = event.target.getAttribute('data-activity');
+            self.activityMap[activity] = 0;
+        };
+
+
         this.onClickSave = function () {
+            var data = self.activityMap;
             var xhr = new XMLHttpRequest();
+
+            data[date] = self.date;
             xhr.onreadystatechange = function() {
                 if ((xhr.readyState === 4) && (xhr.status === 200)) {
                     riot.route('/show');
@@ -45,7 +47,7 @@
             };
             xhr.open('POST', 'https://jill-trainer.herokuapp.com/api/exercises', true );
             xhr.setRequestHeader( 'Content-Type', 'application/json');
-            xhr.send(JSON.stringify({date: '2016-12-04', cycling: '10'}));
+            xhr.send(JSON.stringify(data));
         };
     </script>
 
@@ -61,8 +63,13 @@
         }
 
         .activity > div:first-child{
-            width: 75px;
+            width: 20%;
             margin-right: 10px;
         }
-    </stylescoped>
+
+        .activity img{
+            display: inline-block;
+            max-width: 20%;
+        }
+    </style>
 </my-add-record>

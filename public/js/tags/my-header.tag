@@ -18,6 +18,7 @@
         }
 
         h1 {
+            float: left;
             text-align: center;
             cursor: pointer;
         }
