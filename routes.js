@@ -8,7 +8,8 @@ var mongodb = require('mongodb').MongoClient;
 var assert = require('assert');
 
 // Connection URL
-var url = 'mongodb://localhost:27017/jill-trainer';
+var url = 'mongodb://heroku_8js0d6lr:7uk0ufmgqrq4fof1pbsmn56d6u@ds133398.mlab.com:33398/heroku_8js0d6lr';
+//var url = 'mongodb://localhost:27017/jill-trainer';
 
 
 configRoutes = function (app, server) {
