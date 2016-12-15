@@ -3,7 +3,7 @@
         <legend>{ date.getFullYear() }年{ date.getMonth() + 1 }月</legend>
         <thead>
         <tr>
-            <th>日</th>
+            <th></th>
             <th><img src="img/running.jpg"/></th>
             <th><img src="img/cycling.jpg"/></th>
             <th><img src="img/lifting.jpg"/></th>
@@ -23,7 +23,7 @@
         </tfoot>
         <tbody>
         <tr each="{ data, index in exerciseData }">
-            <td>{ data.date.split('-')[2] }</td>
+            <td>{ data.date.split('/')[2] }日</td>
             <td>{ igNull(data.running) }分</td>
             <td>{ igNull(data.cycling) }分</td>
             <td>{ igNull(data.lifting) }分</td>
@@ -37,6 +37,7 @@
         var self = this;
         this.date = new Date();
         this.exerciseData = [];
+        this.configMap = opts.configMap;
 
 
         this.on('mount', function () {
@@ -47,7 +48,7 @@
                     riot.update();
                 }
             };
-            xhr.open('GET', 'https://jill-trainer.herokuapp.com/api/exercises', true );
+            xhr.open('GET', self.configMap.url + 'api/exercises', true );
             xhr.responseType = 'json';
             xhr.send( null );
         });
@@ -65,9 +66,18 @@
 
 
     <style scoped>
+        legend{
+            padding: 5px;
+            font-weight: bold;
+        }
+
         img {
             display: inline-block;
             width: 30px;
+        }
+
+        tbody tr:nth-of-type(odd){
+            background-color: aliceblue;
         }
     </style>
 </my-show-record>

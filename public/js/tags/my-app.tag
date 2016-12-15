@@ -5,6 +5,24 @@
 
     <script>
         var self = this;
+        this.configMap = (function () {
+//            var mode = 'local'; //local or heroku
+            var mode = 'heroku';
+
+            var url = (function () {
+                if (mode === 'local') {
+                    return 'http://localhost:3000/';
+                } else {
+                    return 'https://jill-trainer.herokuapp.com/';
+                }
+            })();
+
+            return {
+                mode: mode,
+                url: url
+            }
+        })();
+
         this.page = 'add';
 
         this.on('mount', function () {
@@ -14,12 +32,12 @@
 
         riot.route('/show', function () {
             self.page = 'show';
-            riot.mount('#main', 'my-show-record');
+            riot.mount('#main', 'my-show-record', {configMap: self.configMap});
         });
 
         riot.route('/', function () {
             self.page = 'add';
-            riot.mount('#main', 'my-add-record');
+            riot.mount('#main', 'my-add-record', {configMap: self.configMap});
         });
 
         riot.route('*', function () {
