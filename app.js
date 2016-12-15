@@ -40,5 +40,8 @@ if (app.get('env') === 'production') {
 routes.configRoutes(app, server);
 
 // ==================== サーバー起動 ====================
-server.listen(3000);
-console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
+//指定したポートでリクエスト待機状態にする
+app.set('port', process.env.PORT || 5000);
+app.listen(app.get('port'), function () {
+    console.log('Express server listening on port %d in %s mode', app.get('port'), app.settings.env);
+});
